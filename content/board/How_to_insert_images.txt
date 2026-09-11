@@ -1,0 +1,89 @@
+HOW TO ADD OR UPDATE BOARD PHOTOS
+
+Board photos are stored in:
+
+images/board/
+
+Recommended file names:
+
+chair.jpg
+vice-chair.jpg
+treasurer.jpg
+
+You can also use the board member's name, for example:
+
+anna-jensen.jpg
+peter-hansen.jpg
+
+Use simple file names:
+- Use lowercase letters
+- Avoid spaces
+- Use hyphens instead of spaces
+- JPG or PNG files are recommended
+
+
+HOW TO ADD A PHOTO
+
+1. Upload the photo to:
+
+images/board/
+
+Example:
+
+images/board/anna-jensen.jpg
+
+
+2. Open:
+
+content/board/board_current.json
+
+
+3. Find the correct board member.
+
+
+4. Add the path to the photo in the "photo" field.
+
+Example:
+
+{
+  "name": "Anna Jensen",
+  "role": "Chair",
+  "description": "Short description of the board member.",
+  "linkedin": "",
+  "photo": "images/board/anna-jensen.jpg"
+}
+
+
+IF THERE IS NO PHOTO YET
+
+Leave the photo field empty:
+
+"photo": ""
+
+
+IMPORTANT
+
+The file name in board_current.json must be exactly the same as the uploaded image file name.
+
+For example:
+
+images/board/anna-jensen.jpg
+
+is different from:
+
+images/board/Anna-Jensen.jpg
+
+
+UPDATING A PHOTO
+
+You can either:
+
+1. Upload a new image using the same file name
+
+or
+
+2. Upload the image with a new file name and update the "photo" field in board_current.json.
+
+
+After committing the changes to GitHub, the website will update automatically through GitHub Pages.
+
