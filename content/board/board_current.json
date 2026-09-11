@@ -1,1 +1,53 @@
-
+{
+  "members": [
+    {
+      "name": "Julie Bernt Frederiksen",
+      "role": "Chair",
+      "description": "",
+      "linkedin": "",
+      "photo": ""
+    },
+    {
+      "name": "Tania Lind",
+      "role": "Treasurer",
+      "description": "",
+      "linkedin": "",
+      "photo": ""
+    },
+    {
+      "name": "Catrine Trudslev",
+      "role": "Board Member",
+      "description": "",
+      "linkedin": "",
+      "photo": ""
+    },
+    {
+      "name": "Laust Rask",
+      "role": "Board Member",
+      "description": "",
+      "linkedin": "",
+      "photo": ""
+    },
+    {
+      "name": "Line Damm Scheuer",
+      "role": "Board Member",
+      "description": "",
+      "linkedin": "",
+      "photo": ""
+    },
+    {
+      "name": "Nastasia Okulova",
+      "role": "Board Member",
+      "description": "",
+      "linkedin": "",
+      "photo": ""
+    },
+    {
+      "name": "Philip Miguel Kofoed",
+      "role": "Board Member",
+      "description": "",
+      "linkedin": "",
+      "photo": ""
+    }
+  ]
+}
