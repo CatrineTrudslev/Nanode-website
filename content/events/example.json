@@ -6,6 +6,7 @@
       "location": "Copenhagen",
       "short_description": "Join the naNODE community for our spring event.",
       "description": "A longer description of the event can go here, including what the event is about, who can attend, and practical information.",
+      "facebook_link": "",
       "registration_link": ""
     },
     {
@@ -14,6 +15,7 @@
       "location": "Copenhagen",
       "short_description": "Our autumn event brings students and alumni together.",
       "description": "More information about the autumn event will be announced soon.",
+      "facebook_link": "",
       "registration_link": ""
     }
   ],
