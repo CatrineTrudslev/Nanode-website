@@ -11,70 +11,91 @@
 
   <header>
     <div class="logo">
-      <img src="images/NaNODE_logo.png" alt="naNODE logo">
+      <a href="index.html">
+        <img src="images/NaNODE_logo.png" alt="naNODE logo">
+      </a>
     </div>
 
     <nav>
       <a href="index.html">Home</a>
-      <a href="#">Events</a>
-      <a href="#">Become a Member</a>
-      <a href="#">About Us</a>
-      <a href="#">Contact</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Become a Member</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
 
     <section class="hero-grid">
-  
+
       <div class="hero-left">
         <h1 id="hero-headline">Loading...</h1>
-  
+
         <div id="hero-text"></div>
-  
-        <a id="membership-button" href="#" class="primary-button">
+
+        <a
+          id="membership-button"
+          href="membership.html"
+          class="primary-button"
+        >
           Become a member
         </a>
       </div>
-  
+
       <div class="hero-right">
+
         <section class="next-event" id="next-event">
-          <p class="section-label">NEXT EVENT</p>
-  
-          <h2 id="event-title">Loading event...</h2>
-  
+
+          <p class="section-label">
+            NEXT EVENT
+          </p>
+
+          <h2 id="event-title">
+            Loading event...
+          </h2>
+
           <p class="event-info">
             <span id="event-date"></span>
-            ·
+            <span aria-hidden="true"> · </span>
             <span id="event-location"></span>
           </p>
-  
+
           <p id="event-description"></p>
-  
+
           <a href="events.html" class="text-link">
             View all events →
           </a>
+
         </section>
+
       </div>
-  
+
     </section>
-  
+
     <section class="linkedin">
-      <a href="#">Follow naNODE on LinkedIn →</a>
+      <a href="#">
+        Follow naNODE on LinkedIn →
+      </a>
     </section>
-  
+
   </main>
 
   <footer>
-    <div>naNODE</div>
 
     <div>
-      <a href="#">Contact</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Privacy Policy</a>
+      naNODE
     </div>
+
+    <div>
+      <a href="contact.html">Contact</a>
+      <a href="#">LinkedIn</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
   </footer>
 
   <script src="script.js"></script>
+
 </body>
 </html>
