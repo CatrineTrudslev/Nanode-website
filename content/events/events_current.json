@@ -1,1 +1,23 @@
-
+{
+  "upcoming": [
+    {
+      "title": "Autumn Event 2026",
+      "date": "November 2026",
+      "location": "Universitetsparken 5, Copenhagen",
+      "short_description": "Join the naNODE community for our autumn event.",
+      "description": "Details will be announced soon.",
+      "facebook_link": "",
+      "registration_link": ""
+    },
+    {
+      "title": "Spring Event 2027",
+      "date": "March 2027",
+      "location": "Universitetsparken 5, 2100 Copenhagen",
+      "short_description": "Join the naNODE community for our spring event.",
+      "description": "Details will be announced soon.",
+      "facebook_link": "",
+      "registration_link": ""
+    }
+  ],
+  "past": []
+}
