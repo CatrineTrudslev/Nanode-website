@@ -1,0 +1,21 @@
+{
+  "upcoming": [
+    {
+      "title": "naNODE Spring Event 2027",
+      "date": "March 2027",
+      "location": "Copenhagen",
+      "short_description": "Join the naNODE community for our spring event.",
+      "description": "A longer description of the event can go here, including what the event is about, who can attend, and practical information.",
+      "registration_link": ""
+    },
+    {
+      "title": "naNODE Autumn Event 2027",
+      "date": "October 2027",
+      "location": "Copenhagen",
+      "short_description": "Our autumn event brings students and alumni together.",
+      "description": "More information about the autumn event will be announced soon.",
+      "registration_link": ""
+    }
+  ],
+  "past": []
+}
