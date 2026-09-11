@@ -45,8 +45,8 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
+  color: var(--nanode-blue);
+  font-weight: 700;
 }
 
 nav a:hover {
@@ -69,10 +69,10 @@ main {
 
 .hero h1 {
   margin: 0 0 24px;
-  font-size: clamp(2.7rem, 6vw, 5rem);
-  line-height: 1.05;
+  font-size: clamp(2.3rem, 5vw, 4.2rem);
+  line-height: 1.08;
   color: var(--nanode-blue);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
 }
 
 .hero p {
