@@ -185,7 +185,46 @@ async function loadEventsPage() {
   }
 }
 
+/* MEMBERSHIP PAGE */
+
+async function loadMembershipPage() {
+  const title = document.getElementById("membership-title");
+
+  if (!title) {
+    return;
+  }
+
+  try {
+    const data = await getJSON(
+      "content/membership/membership_current.json"
+    );
+
+    title.textContent = data.title;
+
+    document.getElementById("membership-intro").textContent =
+      data.intro;
+
+    document.getElementById("membership-why").textContent =
+      data.why_join;
+
+    document.getElementById("membership-who").textContent =
+      data.who_can_join;
+
+    document.getElementById("membership-fee").textContent =
+      data.membership_fee;
+
+    document.getElementById("membership-signup-text").textContent =
+      data.signup_text;
+
+    document.getElementById("membership-signup-link").href =
+      data.signup_link || "signup.html";
+
+  } catch (error) {
+    console.error("Could not load membership page:", error);
+  }
+}
 
 loadFrontpage();
 loadNextEvent();
 loadEventsPage();
+loadMembershipPage();
