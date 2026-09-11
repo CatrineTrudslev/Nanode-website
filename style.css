@@ -57,31 +57,80 @@ main {
   margin: 0 auto;
 }
 
-/* HERO */
+/* HERO GRID */
 
-.hero {
-  padding: 65px 0 55px;
-  max-width: 900px;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 60px;
+  align-items: center;
+  padding: 70px 0 80px;
 }
 
-.hero h1 {
-  margin: 0 0 22px;
+.hero-left {
+  max-width: 760px;
+}
+
+.hero-left h1 {
+  margin: 0 0 24px;
   font-size: clamp(2.2rem, 4vw, 3.7rem);
   line-height: 1.08;
   color: var(--nanode-blue);
   letter-spacing: -0.03em;
 }
 
-.hero p {
-  max-width: 760px;
+.hero-left p {
+  max-width: 720px;
   font-size: 1.08rem;
   line-height: 1.7;
   margin: 0 0 18px;
   color: #4d5862;
 }
 
-.hero .primary-button {
+.hero-left .primary-button {
   margin-top: 12px;
+}
+
+/* EVENT CARD */
+
+.hero-right {
+  width: 100%;
+}
+
+.next-event {
+  background-color: var(--light-blue);
+  padding: 34px;
+  border-radius: 14px;
+  border-left: 5px solid var(--ku-red);
+  margin: 0;
+}
+
+.section-label {
+  margin: 0 0 8px;
+  color: var(--ku-red);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.next-event h2 {
+  margin: 0 0 12px;
+  color: var(--nanode-blue);
+  font-size: 1.7rem;
+}
+
+.event-info {
+  font-weight: 600;
+}
+
+.text-link {
+  color: var(--nanode-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.text-link:hover {
+  color: var(--ku-red);
 }
 
 /* BUTTON */
@@ -101,43 +150,6 @@ main {
   background-color: var(--ku-red);
 }
 
-/* NEXT EVENT */
-
-.next-event {
-  background-color: var(--light-blue);
-  padding: 42px;
-  border-radius: 12px;
-  margin-bottom: 80px;
-  border-left: 5px solid var(--ku-red);
-}
-
-.section-label {
-  margin: 0 0 8px;
-  color: var(--ku-red);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
-.next-event h2 {
-  margin: 0 0 10px;
-  color: var(--nanode-blue);
-  font-size: 2rem;
-}
-
-.event-info {
-  font-weight: 600;
-}
-
-.text-link {
-  color: var(--nanode-blue);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.text-link:hover {
-  color: var(--ku-red);
-}
 
 /* LINKEDIN */
 
@@ -207,8 +219,14 @@ footer a:hover {
     padding: 70px 0 60px;
   }
 
-  .hero h1 {
-    font-size: 2.8rem;
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 50px 0 60px;
+  }
+  
+  .hero-left h1 {
+    font-size: 2.5rem;
   }
 
   .next-event {
