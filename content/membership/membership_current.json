@@ -1,1 +1,9 @@
-
+{
+  "title": "Become a Member",
+  "intro": "Join naNODE and become part of a growing network of students and alumni from the Nanoscience programme at the University of Copenhagen.",
+  "why_join": "Membership gives you access to social and professional events, networking opportunities and a community spanning different stages of the nanoscience career path.",
+  "who_can_join": "Membership is open to current students and graduates of the Nanoscience programme at the University of Copenhagen, including those who have completed a bachelor's degree, master's degree or PhD.",
+  "membership_fee": "Membership is free for current students. Alumni membership is 200 DKK per year.",
+  "signup_text": "Ready to join naNODE?",
+  "signup_link": "signup.html"
+}
