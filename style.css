@@ -290,6 +290,50 @@ footer a:hover {
   border-left-color: var(--nanode-grey);
 }
 
+/* MEMBERSHIP PAGE */
+
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.membership-card {
+  background-color: var(--white);
+  border: 1px solid #e3e8ed;
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.membership-card h2 {
+  margin: 0 0 14px;
+  color: var(--nanode-blue);
+  font-size: 1.4rem;
+}
+
+.membership-card p {
+  margin: 0;
+  color: #4d5862;
+}
+
+.membership-signup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  background-color: var(--light-blue);
+  border-left: 5px solid var(--ku-red);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 70px;
+}
+
+.membership-signup h2 {
+  margin: 0;
+  color: var(--nanode-blue);
+}
+
 /* TABLET */
 
 @media (max-width: 950px) {
@@ -365,6 +409,15 @@ footer a:hover {
 
   .next-event h2 {
     font-size: 1.55rem;
+  }
+
+  .membership-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .membership-signup {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .linkedin {
