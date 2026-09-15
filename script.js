@@ -228,3 +228,47 @@ loadFrontpage();
 loadNextEvent();
 loadEventsPage();
 loadMembershipPage();
+
+
+/* CONTACT PAGE */
+
+async function loadContactPage() {
+  const emailLink = document.getElementById("contact-email");
+
+  if (!emailLink) {
+    return;
+  }
+
+  try {
+    const data = await getJSON(
+      "content/contact/contact_current.json"
+    );
+
+    const contactText = document.getElementById("contact-text");
+
+    if (data.text && contactText) {
+      contactText.textContent = data.text;
+    }
+
+    if (data.email) {
+      emailLink.textContent = data.email;
+      emailLink.href = `mailto:${data.email}`;
+    } else {
+      emailLink.textContent = "Email address coming soon";
+      emailLink.removeAttribute("href");
+    }
+
+    const linkedInLink = document.getElementById("contact-linkedin");
+
+    if (data.linkedin && linkedInLink) {
+      linkedInLink.href = data.linkedin;
+      linkedInLink.hidden = false;
+    }
+  } catch (error) {
+    console.error("Could not load contact details:", error);
+    emailLink.textContent = "Contact details coming soon";
+    emailLink.removeAttribute("href");
+  }
+}
+
+loadContactPage();
