@@ -250,9 +250,12 @@ async function loadContactPage() {
       contactText.textContent = data.text;
     }
 
-    if (data.email) {
+    if (data.email && data.email_active !== false) {
       emailLink.textContent = data.email;
       emailLink.href = `mailto:${data.email}`;
+    } else if (data.email) {
+      emailLink.textContent = `${data.email} · coming soon`;
+      emailLink.removeAttribute("href");
     } else {
       emailLink.textContent = "Email address coming soon";
       emailLink.removeAttribute("href");
