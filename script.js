@@ -259,10 +259,21 @@ async function loadContactPage() {
     }
 
     const linkedInLink = document.getElementById("contact-linkedin");
+    const linkedInComingSoon = document.getElementById("contact-linkedin-coming-soon");
 
     if (data.linkedin && linkedInLink) {
       linkedInLink.href = data.linkedin;
       linkedInLink.hidden = false;
+      if (linkedInComingSoon) {
+        linkedInComingSoon.hidden = true;
+      }
+    }
+
+    const facebookLink = document.getElementById("contact-facebook");
+
+    if (data.facebook && facebookLink) {
+      facebookLink.href = data.facebook;
+      facebookLink.hidden = false;
     }
   } catch (error) {
     console.error("Could not load contact details:", error);
