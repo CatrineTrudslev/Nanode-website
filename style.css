@@ -530,10 +530,7 @@ nav a[aria-current="page"] {
 }
 
 .about-section {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 24px;
-  align-items: start;
+  display: block;
   background-color: var(--white);
   border: 1px solid #e3e8ed;
   border-left: 5px solid var(--nanode-blue);
@@ -559,8 +556,6 @@ nav a[aria-current="page"] {
 
 @media (max-width: 600px) {
   .about-section {
-    grid-template-columns: 1fr;
-    gap: 8px;
     padding: 24px;
   }
 
