@@ -207,6 +207,15 @@ main {
   color: var(--text-dark);
 }
 
+.event-image {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
 .next-event > p:not(.section-label):not(.event-info) {
   margin: 0 0 18px;
   color: #4d5862;
