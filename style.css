@@ -1,5 +1,5 @@
 :root {
-  --nanode-blue: #174a7e;
+  --nanode-blue: #467f96;
   --nanode-grey: #8c8d8d;
   --ku-red: #901a1e;
   --off-white: #fafaf8;
@@ -108,6 +108,13 @@ main {
 
 .hero-left {
   min-width: 0;
+  padding: 34px 38px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(70, 127, 150, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .hero-left h1 {
@@ -441,6 +448,10 @@ footer a:hover {
 
   .hero-left h1 {
     font-size: 2.35rem;
+  }
+
+  .hero-left {
+    padding: 26px 24px;
   }
 
   .hero-left p {
