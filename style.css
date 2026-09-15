@@ -83,6 +83,12 @@ footer {
   --page-background-mobile: url("images/background-contact-mobile.webp");
 }
 
+.page-privacy {
+  --page-background-desktop: url("images/background-about-desktop.webp");
+  --page-background-tablet: url("images/background-about-tablet.webp");
+  --page-background-mobile: url("images/background-about-mobile.webp");
+}
+
 /* HEADER */
 
 header {
@@ -643,6 +649,44 @@ nav a[aria-current="page"] {
   color: #5d6872;
   font-size: 0.95rem;
   font-weight: 600;
+}
+
+.privacy-content {
+  max-width: 820px;
+  margin-bottom: var(--space-8);
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.privacy-content h2 {
+  margin: var(--space-4) 0 var(--space-1);
+  color: var(--nanode-blue);
+  font-size: 1.35rem;
+}
+
+.privacy-content p {
+  max-width: 72ch;
+  margin: 0 0 var(--space-2);
+  color: #4d5862;
+}
+
+.privacy-content a {
+  color: var(--nanode-blue);
+  font-weight: 700;
+}
+
+.privacy-updated {
+  margin-top: var(--space-4);
+  font-style: italic;
+}
+
+@media (max-width: 750px) {
+  .privacy-content {
+    padding: var(--space-3);
+  }
 }
 
 @media (max-width: 900px) {
