@@ -436,3 +436,86 @@ footer a:hover {
     gap: 8px;
   }
 }
+
+
+/* ABOUT AND CONTACT PAGES */
+
+nav a[aria-current="page"] {
+  color: var(--ku-red);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.content-card {
+  background-color: var(--white);
+  border: 1px solid #e3e8ed;
+  border-top: 5px solid var(--nanode-blue);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.content-card h2,
+.contact-panel h2,
+.page-callout h2 {
+  margin: 0 0 12px;
+  color: var(--nanode-blue);
+}
+
+.content-card p,
+.contact-panel p,
+.page-callout p {
+  margin: 0;
+  color: #4d5862;
+}
+
+.page-callout,
+.contact-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  background-color: var(--light-blue);
+  border-left: 5px solid var(--ku-red);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 70px;
+}
+
+.page-callout .section-label,
+.contact-panel .section-label {
+  margin-bottom: 8px;
+}
+
+.contact-panel {
+  align-items: flex-start;
+}
+
+.contact-panel > div:first-child {
+  max-width: 650px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-callout,
+  .contact-panel {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
