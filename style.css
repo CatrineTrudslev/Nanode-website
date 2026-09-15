@@ -876,6 +876,15 @@ nav a[aria-current="page"] {
   box-shadow: var(--card-shadow);
 }
 
+/* Event status: blue for upcoming, grey for past */
+.event-card {
+  border-left: 5px solid var(--nanode-blue);
+}
+
+.event-card.past-event {
+  border-left-color: var(--nanode-grey);
+}
+
 .hero-left p,
 .page-intro p,
 .event-card p,
