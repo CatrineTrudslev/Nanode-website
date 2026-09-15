@@ -305,21 +305,33 @@ async function loadBoardMembers() {
       const card = document.createElement("article");
       card.className = "board-card";
 
+      const avatar = document.createElement("div");
+      avatar.className = "board-avatar";
+      avatar.setAttribute("aria-hidden", "true");
+      avatar.textContent = member.name
+        .split(" ")
+        .map(namePart => namePart[0])
+        .slice(0, 2)
+        .join("");
+      card.appendChild(avatar);
+
+      const content = document.createElement("div");
+      content.className = "board-card-content";
+
       const name = document.createElement("h3");
       name.textContent = member.name;
-      card.appendChild(name);
+      content.appendChild(name);
 
       const role = document.createElement("p");
       role.className = "board-role";
       role.textContent = member.role;
-      card.appendChild(role);
+      content.appendChild(role);
 
-      if (member.description) {
-        const description = document.createElement("p");
-        description.className = "board-description";
-        description.textContent = member.description;
-        card.appendChild(description);
-      }
+      const description = document.createElement("p");
+      description.className = "board-description";
+      description.textContent =
+        member.description || "Member of the naNODE board";
+      content.appendChild(description);
 
       if (member.linkedin) {
         const linkedIn = document.createElement("a");
@@ -328,9 +340,10 @@ async function loadBoardMembers() {
         linkedIn.target = "_blank";
         linkedIn.rel = "noopener noreferrer";
         linkedIn.textContent = "LinkedIn →";
-        card.appendChild(linkedIn);
+        content.appendChild(linkedIn);
       }
 
+      card.appendChild(content);
       boardContainer.appendChild(card);
     });
   } catch (error) {
