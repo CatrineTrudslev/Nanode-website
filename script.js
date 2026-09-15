@@ -272,3 +272,61 @@ async function loadContactPage() {
 }
 
 loadContactPage();
+
+
+/* BOARD */
+
+async function loadBoardMembers() {
+  const boardContainer = document.getElementById("board-members");
+
+  if (!boardContainer) {
+    return;
+  }
+
+  try {
+    const data = await getJSON(
+      "content/board/board_current.json"
+    );
+
+    boardContainer.innerHTML = "";
+
+    data.members.forEach(member => {
+      const card = document.createElement("article");
+      card.className = "board-card";
+
+      const name = document.createElement("h3");
+      name.textContent = member.name;
+      card.appendChild(name);
+
+      const role = document.createElement("p");
+      role.className = "board-role";
+      role.textContent = member.role;
+      card.appendChild(role);
+
+      if (member.description) {
+        const description = document.createElement("p");
+        description.className = "board-description";
+        description.textContent = member.description;
+        card.appendChild(description);
+      }
+
+      if (member.linkedin) {
+        const linkedIn = document.createElement("a");
+        linkedIn.className = "text-link";
+        linkedIn.href = member.linkedin;
+        linkedIn.target = "_blank";
+        linkedIn.rel = "noopener noreferrer";
+        linkedIn.textContent = "LinkedIn →";
+        card.appendChild(linkedIn);
+      }
+
+      boardContainer.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Could not load board members:", error);
+    boardContainer.innerHTML =
+      "<p>Board member information is currently unavailable.</p>";
+  }
+}
+
+loadBoardMembers();
