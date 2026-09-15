@@ -574,8 +574,16 @@ footer a:hover {
 
   footer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-links {
+    width: 100%;
+    align-items: center;
+    text-align: center;
   }
 
   footer div:last-child {
