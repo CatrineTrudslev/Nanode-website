@@ -92,6 +92,14 @@ function createEventCard(event, isPast = false) {
     ? "event-card past-event"
     : "event-card";
 
+  if (event.image) {
+    const image = document.createElement("img");
+    image.src = event.image;
+    image.alt = event.title;
+    image.className = "event-image";
+    article.appendChild(image);
+  }
+
   const title = document.createElement("h2");
   title.textContent = event.title;
   article.appendChild(title);
