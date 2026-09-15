@@ -4,10 +4,10 @@
   --ku-red: #a96052;
   --off-white: #fafaf8;
   --text-dark: #17212b;
-  --light-blue: rgba(255, 252, 248, 0.90);
-  --surface: rgba(255, 252, 248, 0.86);
+  --light-blue: rgba(255, 252, 248, 0.97);
+  --surface: rgba(255, 252, 248, 0.94);
   --surface-border: rgba(23, 74, 126, 0.12);
-  --callout: rgba(248, 242, 234, 0.94);
+  --callout: rgba(248, 242, 234, 0.97);
   --card-radius: 16px;
   --card-shadow: 0 12px 32px rgba(23, 74, 126, 0.08);
   --space-1: 8px;
@@ -415,7 +415,7 @@ footer a:hover {
 }
 
 .past-event {
-  opacity: 0.82;
+  opacity: 1;
   border-left-color: var(--nanode-grey);
 }
 
