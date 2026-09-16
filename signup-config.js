@@ -1,4 +1,3 @@
 window.NANODE_CONFIG = {
-  // Add the Cloud Run service URL after deployment, without a trailing slash.
-  apiUrl: ""
+  apiUrl: "https://nanode-membership-api-562422936455.europe-west1.run.app"
 };
