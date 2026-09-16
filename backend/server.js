@@ -7,6 +7,9 @@ const { google } = require("googleapis");
 const app = express();
 const port = process.env.PORT || 8080;
 const spreadsheetId = process.env.SPREADSHEET_ID;
+const signupLimit = 3;
+const signupWindowMs = 60 * 60 * 1000;
+const signupAttempts = new Map();
 
 if (!spreadsheetId) {
   throw new Error("SPREADSHEET_ID environment variable is required.");
@@ -21,7 +24,39 @@ const allowedOrigins = new Set(
 );
 
 app.disable("x-powered-by");
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "10kb" }));
+
+function limitSignupAttempts(request, response, next) {
+  const now = Date.now();
+  const key = request.ip;
+  const previous = signupAttempts.get(key);
+
+  if (!previous || now >= previous.resetAt) {
+    signupAttempts.set(key, { count: 1, resetAt: now + signupWindowMs });
+    response.set("RateLimit-Limit", String(signupLimit));
+    response.set("RateLimit-Remaining", String(signupLimit - 1));
+    return next();
+  }
+
+  const remaining = Math.max(0, signupLimit - previous.count);
+  const retryAfterSeconds = Math.max(1, Math.ceil((previous.resetAt - now) / 1000));
+
+  response.set("RateLimit-Limit", String(signupLimit));
+  response.set("RateLimit-Remaining", String(remaining));
+  response.set("RateLimit-Reset", String(Math.ceil(previous.resetAt / 1000)));
+
+  if (previous.count >= signupLimit) {
+    response.set("Retry-After", String(retryAfterSeconds));
+    return response.status(429).json({
+      error: "Too many signup attempts. Please try again in one hour."
+    });
+  }
+
+  previous.count += 1;
+  response.set("RateLimit-Remaining", String(signupLimit - previous.count));
+  next();
+}
 
 app.use((request, response, next) => {
   const origin = request.get("origin");
@@ -98,7 +133,7 @@ app.get("/health", (_request, response) => {
   response.json({ status: "ok" });
 });
 
-app.post("/api/signup", async (request, response) => {
+app.post("/api/signup", limitSignupAttempts, async (request, response) => {
   const origin = request.get("origin");
 
   if (origin && !allowedOrigins.has(origin)) {
