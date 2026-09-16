@@ -6,8 +6,11 @@ const { google } = require("googleapis");
 
 const app = express();
 const port = process.env.PORT || 8080;
-const spreadsheetId =
-  process.env.SPREADSHEET_ID || "14KYi_UoEQxUkufRBIFyuV4eM-szy-5P_fhDaHYFEFxo";
+const spreadsheetId = process.env.SPREADSHEET_ID;
+
+if (!spreadsheetId) {
+  throw new Error("SPREADSHEET_ID environment variable is required.");
+}
 const sheetName = process.env.SHEET_NAME || "Members";
 const allowedOrigins = new Set(
   (process.env.ALLOWED_ORIGINS ||
