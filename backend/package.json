@@ -1,0 +1,17 @@
+{
+  "name": "nanode-membership-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloud Run backend for naNODE membership signup",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "googleapis": "^160.0.0"
+  }
+}

@@ -932,3 +932,161 @@ nav a[aria-current="page"] {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* SIGNUP PAGE */
+
+.signup-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.45fr);
+  gap: var(--space-4);
+  align-items: start;
+  margin-bottom: var(--space-8);
+}
+
+.signup-form,
+.signup-summary {
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.signup-form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.form-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.form-field label,
+.form-field legend {
+  color: var(--nanode-blue);
+  font-weight: 700;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="number"] {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #b7c0c8;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--text-dark);
+  font: inherit;
+}
+
+.form-field input:focus {
+  outline: 3px solid rgba(23, 74, 126, 0.18);
+  border-color: var(--nanode-blue);
+}
+
+.radio-options {
+  display: grid;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.radio-options label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.radio-options input {
+  width: 18px;
+  height: 18px;
+}
+
+.field-hint,
+.field-error,
+.privacy-note,
+.form-status {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.field-hint,
+.privacy-note {
+  color: #5d6872;
+}
+
+.field-error,
+.form-status-error {
+  color: #9a3028;
+}
+
+.form-status-success {
+  color: #226238;
+}
+
+.privacy-note a {
+  color: var(--nanode-blue);
+  font-weight: 700;
+}
+
+.form-submit {
+  justify-self: start;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.form-submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.signup-summary {
+  border-top: 5px solid var(--nanode-blue);
+}
+
+.signup-summary h2 {
+  margin: 0 0 var(--space-2);
+  color: var(--nanode-blue);
+}
+
+.signup-summary ol {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 22px;
+  color: #4d5862;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 850px) {
+  .signup-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .signup-form,
+  .signup-summary {
+    padding: var(--space-3);
+  }
+
+  .form-submit {
+    width: 100%;
+  }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | naNODE</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="signup-config.js" defer></script>
+  <script src="signup.js" defer></script>
+</head>
+
+<body class="page-membership page-signup">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/NaNODE_logo.png?v=3" alt="naNODE logo">
+      </a>
+    </div>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html" aria-current="page">Become a Member</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <p class="section-label">MEMBERSHIP</p>
+      <h1>Join naNODE</h1>
+      <p>Complete the form below to become part of the naNODE community. Student membership is free. Alumni membership is 200 DKK per year.</p>
+    </section>
+
+    <section class="signup-layout">
+      <form id="signup-form" class="signup-form" novalidate>
+        <div class="form-field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="120" required>
+          <p class="field-error" id="name-error"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          <p class="field-error" id="email-error"></p>
+        </div>
+
+        <fieldset class="form-field">
+          <legend>Member type</legend>
+          <div class="radio-options">
+            <label>
+              <input type="radio" name="memberType" value="Student" required>
+              Current nanoscience student
+            </label>
+            <label>
+              <input type="radio" name="memberType" value="Alumni" required>
+              Nanoscience alumnus/alumna
+            </label>
+          </div>
+          <p class="field-error" id="member-type-error"></p>
+        </fieldset>
+
+        <div class="form-field" id="graduation-year-field" hidden>
+          <label for="graduation-year">Expected graduation year</label>
+          <input id="graduation-year" name="graduationYear" type="number" inputmode="numeric" min="2026" max="2045">
+          <p class="field-hint">This helps us know when a student membership should change to alumni membership.</p>
+          <p class="field-error" id="graduation-year-error"></p>
+        </div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="privacy-note">
+          By signing up, you confirm that you have read our
+          <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+        </p>
+
+        <button class="primary-button form-submit" type="submit">Submit membership application</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="signup-summary">
+        <p class="section-label">WHAT HAPPENS NEXT?</p>
+        <h2>Membership process</h2>
+        <ol>
+          <li>Submit your membership details.</li>
+          <li>Students receive free membership.</li>
+          <li>Alumni will be directed to MobilePay when payments are activated.</li>
+          <li>A confirmation is shown when your application has been registered.</li>
+        </ol>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <strong>naNODE</strong>
+      <span>Nanoscience alumni association · Copenhagen</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <span>LinkedIn coming soon</span>
+      <span>update@nanode.com · coming soon</span>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+</body>
+</html>
