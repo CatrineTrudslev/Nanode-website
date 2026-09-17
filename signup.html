@@ -36,15 +36,21 @@
     <section class="signup-layout">
       <form id="signup-form" class="signup-form" novalidate>
         <div class="form-field">
-          <label for="name">Full name</label>
-          <input id="name" name="name" type="text" autocomplete="name" maxlength="120" required>
-          <p class="field-error" id="name-error"></p>
+          <label for="first-name">First name</label>
+          <input id="first-name" name="firstName" type="text" autocomplete="given-name" maxlength="60" required>
+          <p class="field-error" id="first-name-error"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="last-name">Last name</label>
+          <input id="last-name" name="lastName" type="text" autocomplete="family-name" maxlength="60" required>
+          <p class="field-error" id="last-name-error"></p>
         </div>
 
         <div class="form-field">
           <label for="email">Email address</label>
           <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
-          <p class="field-hint">Please use a personal email address, not your KU email.</p>
+          <p class="field-hint">Please use a personal email address. Addresses ending in @alumni.ku.dk are not accepted.</p>
           <p class="field-error" id="email-error"></p>
         </div>
 
