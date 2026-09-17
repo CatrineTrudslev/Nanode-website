@@ -29,19 +29,29 @@ function clearErrors() {
 function validateForm() {
   clearErrors();
   let valid = true;
-  const name = signupForm.elements.name.value.trim();
-  const email = signupForm.elements.email.value.trim();
+  const firstName = signupForm.elements.firstName.value.trim();
+  const lastName = signupForm.elements.lastName.value.trim();
+  const email = signupForm.elements.email.value.trim().toLowerCase();
   const memberType = selectedMemberType();
   const graduationYear = graduationYearInput.value;
   const currentYear = new Date().getFullYear();
 
-  if (name.length < 2) {
-    document.getElementById("name-error").textContent = "Please enter your full name.";
+  if (firstName.length < 1) {
+    document.getElementById("first-name-error").textContent = "Please enter your first name.";
+    valid = false;
+  }
+
+  if (lastName.length < 1) {
+    document.getElementById("last-name-error").textContent = "Please enter your last name.";
     valid = false;
   }
 
   if (!signupForm.elements.email.validity.valid) {
     document.getElementById("email-error").textContent = "Please enter a valid email address.";
+    valid = false;
+  } else if (email.endsWith("@alumni.ku.dk")) {
+    document.getElementById("email-error").textContent =
+      "Please use a personal email address instead of your KU alumni email.";
     valid = false;
   }
 
@@ -59,7 +69,11 @@ function validateForm() {
     }
   }
 
-  return valid ? { name, email, memberType, graduationYear } : null;
+  const name = `${firstName} ${lastName}`;
+
+  return valid
+    ? { firstName, lastName, name, email, memberType, graduationYear }
+    : null;
 }
 
 signupForm.querySelectorAll('input[name="memberType"]').forEach(input => {
