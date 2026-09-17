@@ -47,7 +47,8 @@ function cleanText(value, maxLength) {
 }
 
 function validateSignup(body) {
-  const name = cleanText(body.name, 120);
+  const firstName = cleanText(body.firstName, 60);
+  const lastName = cleanText(body.lastName, 60);
   const email = cleanText(body.email, 254).toLowerCase();
   const memberType = cleanText(body.memberType, 20);
   const graduationYear = cleanText(body.graduationYear, 4);
@@ -57,12 +58,20 @@ function validateSignup(body) {
     return { spam: true };
   }
 
-  if (name.length < 2) {
-    return { error: "Please enter your full name." };
+  if (!firstName) {
+    return { error: "Please enter your first name." };
+  }
+
+  if (!lastName) {
+    return { error: "Please enter your last name." };
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { error: "Please enter a valid email address." };
+  }
+
+  if (email.endsWith("@alumni.ku.dk")) {
+    return { error: "Please use a personal email address instead of your KU alumni email." };
   }
 
   if (!["Student", "Alumni"].includes(memberType)) {
@@ -79,7 +88,7 @@ function validateSignup(body) {
   }
 
   return {
-    name,
+    name: `${firstName} ${lastName}`,
     email,
     memberType,
     graduationYear: memberType === "Student" ? graduationYear : ""
