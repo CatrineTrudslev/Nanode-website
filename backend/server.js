@@ -78,20 +78,31 @@ function validateSignup(body) {
     return { error: "Please choose a valid member type." };
   }
 
+  const graduationYearNumber = Number(graduationYear);
+
   if (
     memberType === "Student" &&
     (!/^\d{4}$/.test(graduationYear) ||
-      Number(graduationYear) < currentYear ||
-      Number(graduationYear) > currentYear + 15)
+      graduationYearNumber < currentYear ||
+      graduationYearNumber > currentYear + 15)
   ) {
     return { error: "Please enter a valid expected graduation year." };
+  }
+
+  if (
+    memberType === "Alumni" &&
+    (!/^\d{4}$/.test(graduationYear) ||
+      graduationYearNumber < 2000 ||
+      graduationYearNumber > currentYear)
+  ) {
+    return { error: "Please enter a valid graduation year." };
   }
 
   return {
     name: `${firstName} ${lastName}`,
     email,
     memberType,
-    graduationYear: memberType === "Student" ? graduationYear : ""
+    graduationYear
   };
 }
 
