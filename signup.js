@@ -2,6 +2,7 @@ const signupForm = document.getElementById("signup-form");
 const graduationYearField = document.getElementById("graduation-year-field");
 const graduationYearInput = document.getElementById("graduation-year");
 const formStatus = document.getElementById("form-status");
+const paymentPanel = document.getElementById("payment-panel");
 
 function selectedMemberType() {
   return signupForm.querySelector('input[name="memberType"]:checked')?.value || "";
@@ -24,6 +25,7 @@ function clearErrors() {
   });
   formStatus.textContent = "";
   formStatus.className = "form-status";
+  paymentPanel.hidden = true;
 }
 
 function validateForm() {
@@ -122,6 +124,7 @@ signupForm.addEventListener("submit", async event => {
     updateMemberFields();
     formStatus.textContent = result.message;
     formStatus.className = "form-status form-status-success";
+    paymentPanel.hidden = data.memberType !== "Alumni";
   } catch (error) {
     formStatus.textContent = error.message;
     formStatus.className = "form-status form-status-error";
