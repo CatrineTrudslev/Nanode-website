@@ -1,0 +1,11 @@
+{
+  "name": "Temporary MobilePay Box membership process",
+  "active": true,
+  "steps": [
+    "Submit your membership details.",
+    "Students receive free membership and do not need to pay.",
+    "After a successful alumni registration, the payment section appears.",
+    "Select Open MobilePay and enter 100 DKK for Box 2457DY.",
+    "After payment, you are now a member."
+  ]
+}
