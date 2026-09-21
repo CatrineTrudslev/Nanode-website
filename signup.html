@@ -88,6 +88,19 @@
 
         <button class="primary-button form-submit" type="submit">Submit membership application</button>
         <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+
+        <section id="payment-panel" class="payment-panel" aria-labelledby="payment-heading" hidden>
+          <p class="section-label">ALUMNI PAYMENT</p>
+          <h2 id="payment-heading">Pay your annual membership fee</h2>
+          <p><strong>Amount:</strong> 100 DKK</p>
+          <p><strong>MobilePay Box:</strong> 2457DY</p>
+          <p>Enter 100 DKK in MobilePay after opening the box.</p>
+          <a class="primary-button payment-button"
+             href="https://qr.mobilepay.dk/box/8c97a816-53d7-40b3-aa80-784c5839ecb8/pay-in">
+            Open MobilePay
+          </a>
+          <p class="field-hint">Payment is checked manually and may not appear as paid immediately.</p>
+        </section>
       </form>
 
       <aside class="signup-summary">
@@ -96,7 +109,7 @@
         <ol>
           <li>Submit your membership details.</li>
           <li>Students receive free membership.</li>
-          <li>Alumni will be directed to MobilePay when payments are activated.</li>
+          <li>Alumni pay the annual fee of 100 DKK via MobilePay after registering.</li>
           <li>A confirmation is shown when your application has been registered.</li>
         </ol>
       </aside>
