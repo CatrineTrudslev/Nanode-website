@@ -1,0 +1,10 @@
+{
+  "name": "Standard membership process",
+  "purpose": "Restore this process when the temporary MobilePay Box flow is replaced.",
+  "steps": [
+    "Submit your membership details.",
+    "Students receive free membership.",
+    "Alumni pay the annual fee of 100 DKK via MobilePay after registering.",
+    "A confirmation is shown when your application has been registered."
+  ]
+}
