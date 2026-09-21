@@ -967,6 +967,10 @@ nav a[aria-current="page"] {
   border: 0;
 }
 
+.form-field[hidden] {
+  display: none;
+}
+
 .form-field label,
 .form-field legend {
   color: var(--nanode-blue);
