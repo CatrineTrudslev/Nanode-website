@@ -1,6 +1,8 @@
 const signupForm = document.getElementById("signup-form");
 const graduationYearField = document.getElementById("graduation-year-field");
 const graduationYearInput = document.getElementById("graduation-year");
+const graduationYearLabel = document.getElementById("graduation-year-label");
+const graduationYearHint = document.getElementById("graduation-year-hint");
 const formStatus = document.getElementById("form-status");
 const paymentPanel = document.getElementById("payment-panel");
 
@@ -9,14 +11,31 @@ function selectedMemberType() {
 }
 
 function updateMemberFields() {
-  const isStudent = selectedMemberType() === "Student";
-  graduationYearField.hidden = !isStudent;
-  graduationYearInput.required = isStudent;
+  const memberType = selectedMemberType();
+  const isStudent = memberType === "Student";
+  const currentYear = new Date().getFullYear();
 
-  if (!isStudent) {
+  graduationYearField.hidden = !memberType;
+  graduationYearInput.required = Boolean(memberType);
+
+  if (!memberType) {
     graduationYearInput.value = "";
-    document.getElementById("graduation-year-error").textContent = "";
+    graduationYearHint.textContent = "";
+  } else if (isStudent) {
+    graduationYearLabel.textContent = "Expected graduation year";
+    graduationYearHint.textContent =
+      "This helps us know when a student membership should change to alumni membership.";
+    graduationYearInput.min = String(currentYear);
+    graduationYearInput.max = String(currentYear + 15);
+  } else {
+    graduationYearLabel.textContent = "Graduation year";
+    graduationYearHint.textContent =
+      "Please enter the year you graduated from the Nanoscience programme.";
+    graduationYearInput.min = "2000";
+    graduationYearInput.max = String(currentYear);
   }
+
+  document.getElementById("graduation-year-error").textContent = "";
 }
 
 function clearErrors() {
@@ -62,11 +81,20 @@ function validateForm() {
     valid = false;
   }
 
-  if (memberType === "Student") {
+  if (memberType) {
     const year = Number(graduationYear);
-    if (!graduationYear || year < currentYear || year > currentYear + 15) {
+    const invalidStudentYear =
+      memberType === "Student" &&
+      (!graduationYear || year < currentYear || year > currentYear + 15);
+    const invalidAlumniYear =
+      memberType === "Alumni" &&
+      (!graduationYear || year < 2000 || year > currentYear);
+
+    if (invalidStudentYear || invalidAlumniYear) {
       document.getElementById("graduation-year-error").textContent =
-        "Please enter a valid expected graduation year.";
+        memberType === "Student"
+          ? "Please enter a valid expected graduation year."
+          : "Please enter a valid graduation year.";
       valid = false;
     }
   }
