@@ -14,7 +14,7 @@ if (!spreadsheetId) {
 const sheetName = process.env.SHEET_NAME || "Members";
 const allowedOrigins = new Set(
   (process.env.ALLOWED_ORIGINS ||
-    "https://catrinetrudslev.github.io,http://localhost:8000,http://127.0.0.1:8000")
+    "https://nanode.dk,https://www.nanode.dk,https://catrinetrudslev.github.io,http://localhost:8000,http://127.0.0.1:8000")
     .split(",")
     .map(origin => origin.trim())
     .filter(Boolean)
