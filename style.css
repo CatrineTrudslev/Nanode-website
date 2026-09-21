@@ -1090,3 +1090,41 @@ nav a[aria-current="page"] {
     width: 100%;
   }
 }
+
+
+.payment-panel {
+  display: grid;
+  gap: 10px;
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  background: var(--light-blue);
+  border-left: 4px solid var(--ku-red);
+  border-radius: var(--card-radius);
+}
+
+.payment-panel[hidden] {
+  display: none;
+}
+
+.payment-panel h2,
+.payment-panel p {
+  margin: 0;
+}
+
+.payment-panel h2 {
+  color: var(--nanode-blue);
+  font-size: 1.3rem;
+}
+
+.payment-button {
+  justify-self: start;
+  margin: 6px 0;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .payment-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
