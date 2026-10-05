@@ -29,6 +29,33 @@
       "description": "A relaunch of the naNODE community with a presentation by Nobel Prize laureate Morten Meldal.",
       "facebook_link": "https://www.facebook.com/events/657569823286204/",
       "registration_link": ""
+    },
+    {
+      "title": "Summerparty",
+      "date": "18 June 2022",
+      "location": "Copenhagen",
+      "short_description": "A summer celebration for the naNODE community.",
+      "description": "A summer party for naNODE members, students and alumni, bringing the community together for an informal social event.",
+      "facebook_link": "https://www.facebook.com/events/5038305112953390/",
+      "registration_link": ""
+    },
+    {
+      "title": "Generalforsamling i Nanode",
+      "date": "31 May 2022",
+      "location": "H.C. Ørsted Instituttet, Universitetsparken 5, Copenhagen",
+      "short_description": "naNODE held its general assembly for members, students and alumni.",
+      "description": "The naNODE general assembly gathered members, students and alumni at H.C. Ørsted Instituttet.",
+      "facebook_link": "https://www.facebook.com/events/736989624154000/",
+      "registration_link": ""
+    },
+    {
+      "title": "naNODE event: Future Energy",
+      "date": "17 March 2022",
+      "location": "Aud. 02, August Krogh Instituttet, University of Copenhagen",
+      "short_description": "A naNODE talk series about future energy sources.",
+      "description": "naNODE returned with an event focused on future energy sources and an evening talk series for the community.",
+      "facebook_link": "https://www.facebook.com/events/2922411078058342/",
+      "registration_link": ""
     }
   ]
 }
