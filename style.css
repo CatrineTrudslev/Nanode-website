@@ -54,39 +54,39 @@ footer {
 }
 
 .page-home {
-  --page-background-desktop: url("images/background-home-desktop.webp");
-  --page-background-tablet: url("images/background-home-tablet.webp");
-  --page-background-mobile: url("images/background-home-mobile.webp");
+  --page-background-desktop: url("images/backgrounds/background-home-desktop.webp");
+  --page-background-tablet: url("images/backgrounds/background-home-tablet.webp");
+  --page-background-mobile: url("images/backgrounds/background-home-mobile.webp");
 }
 
 .page-events {
-  --page-background-desktop: url("images/background-events-desktop.webp");
-  --page-background-tablet: url("images/background-events-tablet.webp");
-  --page-background-mobile: url("images/background-events-mobile.webp");
+  --page-background-desktop: url("images/backgrounds/background-events-desktop.webp");
+  --page-background-tablet: url("images/backgrounds/background-events-tablet.webp");
+  --page-background-mobile: url("images/backgrounds/background-events-mobile.webp");
 }
 
 .page-membership {
-  --page-background-desktop: url("images/background-membership-desktop.webp");
-  --page-background-tablet: url("images/background-membership-tablet.webp");
-  --page-background-mobile: url("images/background-membership-mobile.webp");
+  --page-background-desktop: url("images/backgrounds/background-membership-desktop.webp");
+  --page-background-tablet: url("images/backgrounds/background-membership-tablet.webp");
+  --page-background-mobile: url("images/backgrounds/background-membership-mobile.webp");
 }
 
 .page-about {
-  --page-background-desktop: url("images/background-about-desktop.webp");
-  --page-background-tablet: url("images/background-about-tablet.webp");
-  --page-background-mobile: url("images/background-about-mobile.webp");
+  --page-background-desktop: url("images/backgrounds/background-about-desktop.webp");
+  --page-background-tablet: url("images/backgrounds/background-about-tablet.webp");
+  --page-background-mobile: url("images/backgrounds/background-about-mobile.webp");
 }
 
 .page-contact {
-  --page-background-desktop: url("images/background-contact-desktop.webp");
-  --page-background-tablet: url("images/background-contact-tablet.webp");
-  --page-background-mobile: url("images/background-contact-mobile.webp");
+  --page-background-desktop: url("images/backgrounds/background-contact-desktop.webp");
+  --page-background-tablet: url("images/backgrounds/background-contact-tablet.webp");
+  --page-background-mobile: url("images/backgrounds/background-contact-mobile.webp");
 }
 
 .page-privacy {
-  --page-background-desktop: url("images/background-about-desktop.webp");
-  --page-background-tablet: url("images/background-about-tablet.webp");
-  --page-background-mobile: url("images/background-about-mobile.webp");
+  --page-background-desktop: url("images/backgrounds/background-about-desktop.webp");
+  --page-background-tablet: url("images/backgrounds/background-about-tablet.webp");
+  --page-background-mobile: url("images/backgrounds/background-about-mobile.webp");
 }
 
 /* HEADER */
