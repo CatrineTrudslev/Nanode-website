@@ -48,6 +48,10 @@ function cleanText(value, maxLength) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 }
 
+function sheetRange(name, range) {
+  return `'${name.replace(/'/g, "''")}'!${range}`;
+}
+
 function validateSignup(body) {
   const firstName = cleanText(body.firstName, 60);
   const lastName = cleanText(body.lastName, 60);
@@ -167,7 +171,7 @@ app.post("/api/signup", async (request, response) => {
     const sheets = await sheetsClient();
     const existing = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${sheetName}!C2:D`
+      range: sheetRange(sheetName, "C2:D")
     });
 
     const duplicate = (existing.data.values || []).some(
@@ -195,7 +199,7 @@ app.post("/api/signup", async (request, response) => {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: `${sheetName}!A:I`,
+      range: sheetRange(sheetName, "A:I"),
       valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
       requestBody: { values: [row] }
@@ -241,7 +245,7 @@ app.post("/api/event-signup", async (request, response) => {
     const sheets = await sheetsClient();
     const members = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${sheetName}!C2:E`
+      range: sheetRange(sheetName, "C2:E")
     });
 
     const member = (members.data.values || []).find(row => {
@@ -260,7 +264,7 @@ app.post("/api/event-signup", async (request, response) => {
 
     const registrations = await sheets.spreadsheets.values.get({
       spreadsheetId: eventSpreadsheetId,
-      range: `${eventSheetName}!C2:E`
+      range: sheetRange(eventSheetName, "C2:E")
     });
 
     const duplicate = (registrations.data.values || []).some(row => {
@@ -286,7 +290,7 @@ app.post("/api/event-signup", async (request, response) => {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: eventSpreadsheetId,
-      range: `${eventSheetName}!A:F`,
+      range: sheetRange(eventSheetName, "A:F"),
       valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
       requestBody: { values: [row] }
