@@ -13,7 +13,7 @@ if (!spreadsheetId) {
   throw new Error("SPREADSHEET_ID environment variable is required.");
 }
 const sheetName = process.env.SHEET_NAME || "Members";
-const eventSheetName = process.env.EVENT_SHEET_NAME || "Registrations";
+const eventSheetName = process.env.EVENT_SHEET_NAME || "Tilmeldinger";
 const allowedOrigins = new Set(
   (process.env.ALLOWED_ORIGINS ||
     "https://nanode.dk,https://www.nanode.dk,https://catrinetrudslev.github.io,http://localhost:8000,http://127.0.0.1:8000")
