@@ -264,12 +264,12 @@ app.post("/api/event-signup", async (request, response) => {
 
     const registrations = await sheets.spreadsheets.values.get({
       spreadsheetId: eventSpreadsheetId,
-      range: sheetRange(eventSheetName, "C2:E")
+      range: sheetRange(eventSheetName, "C2:G")
     });
 
     const duplicate = (registrations.data.values || []).some(row => {
       const eventTitle = String(row[0] || "").trim().toLowerCase();
-      const email = String(row[2] || "").trim().toLowerCase();
+      const email = String(row[4] || "").trim().toLowerCase();
       return eventTitle === signup.eventTitle.toLowerCase() && email === signup.email;
     });
 
@@ -283,6 +283,8 @@ app.post("/api/event-signup", async (request, response) => {
       crypto.randomUUID(),
       new Date().toISOString(),
       signup.eventTitle,
+      signup.eventDate,
+      signup.eventLocation,
       memberName,
       signup.email,
       memberType
@@ -290,7 +292,7 @@ app.post("/api/event-signup", async (request, response) => {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: eventSpreadsheetId,
-      range: sheetRange(eventSheetName, "A:F"),
+      range: sheetRange(eventSheetName, "A:H"),
       valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
       requestBody: { values: [row] }
