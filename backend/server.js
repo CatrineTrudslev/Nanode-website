@@ -241,29 +241,31 @@ app.post("/api/event-signup", async (request, response) => {
     const sheets = await sheetsClient();
     const members = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${sheetName}!C2:G`
+      range: `${sheetName}!C2:E`
     });
 
     const member = (members.data.values || []).find(row => {
       const email = String(row[1] || "").trim().toLowerCase();
-      const status = String(row[4] || "").trim().toLowerCase();
-      return email === signup.email && status === "active";
+      return email === signup.email;
     });
 
     if (!member) {
       return response.status(403).json({
-        error: "This email address is not registered as an active naNODE member."
+        error: "You can only sign up for this event if you are a member of naNODE. Please become a member first, or use the email address connected to your membership."
       });
     }
 
+    const memberName = String(member[0] || "").trim();
+    const memberType = String(member[2] || "").trim();
+
     const registrations = await sheets.spreadsheets.values.get({
       spreadsheetId: eventSpreadsheetId,
-      range: `${eventSheetName}!C2:D`
+      range: `${eventSheetName}!C2:E`
     });
 
     const duplicate = (registrations.data.values || []).some(row => {
       const eventTitle = String(row[0] || "").trim().toLowerCase();
-      const email = String(row[1] || "").trim().toLowerCase();
+      const email = String(row[2] || "").trim().toLowerCase();
       return eventTitle === signup.eventTitle.toLowerCase() && email === signup.email;
     });
 
@@ -277,15 +279,14 @@ app.post("/api/event-signup", async (request, response) => {
       crypto.randomUUID(),
       new Date().toISOString(),
       signup.eventTitle,
+      memberName,
       signup.email,
-      signup.eventDate,
-      signup.eventLocation,
-      "Registered"
+      memberType
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: eventSpreadsheetId,
-      range: `${eventSheetName}!A:G`,
+      range: `${eventSheetName}!A:F`,
       valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
       requestBody: { values: [row] }
