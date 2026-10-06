@@ -7,11 +7,13 @@ const { google } = require("googleapis");
 const app = express();
 const port = process.env.PORT || 8080;
 const spreadsheetId = process.env.SPREADSHEET_ID;
+const eventSpreadsheetId = process.env.EVENT_SPREADSHEET_ID;
 
 if (!spreadsheetId) {
   throw new Error("SPREADSHEET_ID environment variable is required.");
 }
 const sheetName = process.env.SHEET_NAME || "Members";
+const eventSheetName = process.env.EVENT_SHEET_NAME || "Registrations";
 const allowedOrigins = new Set(
   (process.env.ALLOWED_ORIGINS ||
     "https://nanode.dk,https://www.nanode.dk,https://catrinetrudslev.github.io,http://localhost:8000,http://127.0.0.1:8000")
@@ -106,6 +108,32 @@ function validateSignup(body) {
   };
 }
 
+function validateEventSignup(body) {
+  const email = cleanText(body.email, 254).toLowerCase();
+  const eventTitle = cleanText(body.eventTitle, 160);
+  const eventDate = cleanText(body.eventDate, 80);
+  const eventLocation = cleanText(body.eventLocation, 160);
+
+  if (cleanText(body.website, 200)) {
+    return { spam: true };
+  }
+
+  if (!eventTitle) {
+    return { error: "Event information is missing. Please refresh the page and try again." };
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return { error: "Please enter a valid email address." };
+  }
+
+  return {
+    email,
+    eventTitle,
+    eventDate,
+    eventLocation
+  };
+}
+
 async function sheetsClient() {
   const auth = new google.auth.GoogleAuth({
     scopes: ["https://www.googleapis.com/auth/spreadsheets"]
@@ -182,6 +210,94 @@ app.post("/api/signup", async (request, response) => {
     console.error("Could not register member:", error);
     return response.status(500).json({
       error: "We could not register your application. Please try again later."
+    });
+  }
+});
+
+app.post("/api/event-signup", async (request, response) => {
+  const origin = request.get("origin");
+
+  if (origin && !allowedOrigins.has(origin)) {
+    return response.status(403).json({ error: "Origin is not allowed." });
+  }
+
+  if (!eventSpreadsheetId) {
+    return response.status(503).json({
+      error: "Event registration is being connected. Please try again soon."
+    });
+  }
+
+  const signup = validateEventSignup(request.body || {});
+
+  if (signup.spam) {
+    return response.status(202).json({ message: "Registration received." });
+  }
+
+  if (signup.error) {
+    return response.status(400).json({ error: signup.error });
+  }
+
+  try {
+    const sheets = await sheetsClient();
+    const members = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: `${sheetName}!C2:G`
+    });
+
+    const member = (members.data.values || []).find(row => {
+      const email = String(row[1] || "").trim().toLowerCase();
+      const status = String(row[4] || "").trim().toLowerCase();
+      return email === signup.email && status === "active";
+    });
+
+    if (!member) {
+      return response.status(403).json({
+        error: "This email address is not registered as an active naNODE member."
+      });
+    }
+
+    const registrations = await sheets.spreadsheets.values.get({
+      spreadsheetId: eventSpreadsheetId,
+      range: `${eventSheetName}!C2:D`
+    });
+
+    const duplicate = (registrations.data.values || []).some(row => {
+      const eventTitle = String(row[0] || "").trim().toLowerCase();
+      const email = String(row[1] || "").trim().toLowerCase();
+      return eventTitle === signup.eventTitle.toLowerCase() && email === signup.email;
+    });
+
+    if (duplicate) {
+      return response.status(409).json({
+        error: "This email address is already signed up for this event."
+      });
+    }
+
+    const row = [
+      crypto.randomUUID(),
+      new Date().toISOString(),
+      signup.eventTitle,
+      signup.email,
+      signup.eventDate,
+      signup.eventLocation,
+      "Registered"
+    ];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: eventSpreadsheetId,
+      range: `${eventSheetName}!A:G`,
+      valueInputOption: "RAW",
+      insertDataOption: "INSERT_ROWS",
+      requestBody: { values: [row] }
+    });
+
+    return response.status(201).json({
+      message: "You are signed up for the event."
+    });
+  } catch (error) {
+    console.error("Could not register event signup:", error);
+    return response.status(500).json({
+      error: "We could not register your event signup. Please try again later."
     });
   }
 });
