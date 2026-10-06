@@ -298,7 +298,7 @@ app.post("/api/event-signup", async (request, response) => {
   } catch (error) {
     console.error("Could not register event signup:", error);
     return response.status(500).json({
-      error: "We could not register your event signup. Please try again later."
+      error: "We could not register your event signup. Please make sure you use the correct email."
     });
   }
 });
